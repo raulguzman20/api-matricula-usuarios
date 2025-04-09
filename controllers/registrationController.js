@@ -67,7 +67,7 @@ exports.deleteRegistration = async (req, res) => {
             return res.status(404).json({ message: 'Registration not found' });
         }
 
-        await registration.remove();
+        await Registration.deleteOne({ _id: req.params.id });
         res.json({ message: 'Registration deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: error.message });
